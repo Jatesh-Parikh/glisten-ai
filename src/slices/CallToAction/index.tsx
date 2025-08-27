@@ -1,6 +1,9 @@
-import { FC } from "react";
 import { Content } from "@prismicio/client";
-import { SliceComponentProps } from "@prismicio/react";
+import { PrismicText, SliceComponentProps } from "@prismicio/react";
+import { FC } from "react";
+import PlainLogo from "./PlainLogo";
+import Bounded from "@/components/Bounded";
+import ButtonLink from "@/components/ButtonLink";
 
 /**
  * Props for `CallToAction`.
@@ -12,41 +15,25 @@ export type CallToActionProps = SliceComponentProps<Content.CallToActionSlice>;
  */
 const CallToAction: FC<CallToActionProps> = ({ slice }) => {
   return (
-    <section
+    <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
+      className="relative py-32 text-center font-medium md:py-40"
     >
-      Placeholder component for call_to_action (variation: {slice.variation})
-      slices.
-      <br />
-      <strong>You can edit this slice directly in your code editor.</strong>
-      {/**
-       * 💡 Use Prismic MCP with your code editor
-       *
-       * Get AI-powered help to build your slice components — based on your actual model.
-       *
-       * ▶️ Setup:
-       * 1. Add a new MCP Server in your code editor:
-       *
-       * {
-       *   "mcpServers": {
-       *     "Prismic MCP": {
-       *       "command": "npx",
-       *       "args": ["-y", "@prismicio/mcp-server@latest"]
-       *     }
-       *   }
-       * }
-       *
-       * 2. Select a model optimized for coding (e.g. Claude 3.7 Sonnet or similar)
-       *
-       * ✅ Then open your slice file and ask your code editor:
-       *    "Code this slice"
-       *
-       * Your code editor reads your slice model and helps you code faster ⚡
-       * 🎙️ Give your feedback: https://community.prismic.io/t/help-us-shape-the-future-of-slice-creation/19505
-       * 📚 Documentation: https://prismic.io/docs/ai#code-with-prismics-mcp-server
-       */}
-    </section>
+      <div className="glow absolute -z-10 aspect-square w-full max-w-sm rounded-full bg-blue-500/50 blur-[160px] filter" />
+
+      <div className="glass-container rounded-lg bg-gradient-to-b from-slate-800 to-slate-900 p-4 md:rounded-xl">
+        <PlainLogo />
+      </div>
+
+      <div className="mt-8 max-w-xl text-5xl text-balance">
+        <PrismicText field={slice.primary.heading} />
+      </div>
+
+      <ButtonLink field={slice.primary.button_link} className="mt-6">
+        {slice.primary.button_text || "Learn More"}
+      </ButtonLink>
+    </Bounded>
   );
 };
 

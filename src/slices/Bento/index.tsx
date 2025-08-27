@@ -17,7 +17,7 @@ export type BentoProps = SliceComponentProps<Content.BentoSlice>;
 /**
  * Component for "Bento" Slices.
  */
-const Bento = ({ slice }: BentoProps) => {
+const Bento: FC<BentoProps> = ({ slice }) => {
   return (
     <Bounded
       data-slice-type={slice.slice_type}
