@@ -8,9 +8,13 @@ import StarGrid from "@/components/StarGrid";
 import { PrismicNextImage } from "@prismicio/next";
 import { asText } from "@prismicio/client";
 
-type Params = { uid: string };
+type PageProps = {
+  params: {
+    uid: string;
+  };
+};
 
-export default async function Page({ params }: { params: Params }) {
+export default async function Page({ params }: PageProps) {
   const client = createClient();
   const page = await client
     .getByUID("case_study", params.uid)
@@ -44,9 +48,7 @@ export default async function Page({ params }: { params: Params }) {
 
 export async function generateMetadata({
   params,
-}: {
-  params: Params;
-}): Promise<Metadata> {
+}: PageProps): Promise<Metadata> {
   const client = createClient();
   const page = await client
     .getByUID("case_study", params.uid)
