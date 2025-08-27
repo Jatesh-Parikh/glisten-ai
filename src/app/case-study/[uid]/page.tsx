@@ -8,17 +8,12 @@ import StarGrid from "@/components/StarGrid";
 import { PrismicNextImage } from "@prismicio/next";
 import { asText } from "@prismicio/client";
 
-type PageProps = {
-  params: {
-    uid: string;
-  };
-};
+type Params = { uid: string };
 
-export default async function Page({ params }: PageProps) {
+export default async function Page({ params }: { params: Promise<Params> }) {
+  const { uid } = await params;
   const client = createClient();
-  const page = await client
-    .getByUID("case_study", params.uid)
-    .catch(() => notFound());
+  const page = await client.getByUID("case_study", uid).catch(() => notFound());
 
   return (
     <Bounded as={"article"}>
@@ -48,11 +43,12 @@ export default async function Page({ params }: PageProps) {
 
 export async function generateMetadata({
   params,
-}: PageProps): Promise<Metadata> {
+}: {
+  params: Promise<Params>;
+}): Promise<Metadata> {
+  const { uid } = await params;
   const client = createClient();
-  const page = await client
-    .getByUID("case_study", params.uid)
-    .catch(() => notFound());
+  const page = await client.getByUID("case_study", uid).catch(() => notFound());
 
   return {
     title: `${page.data.meta_title || asText(page.data.company)} Case Study`,
