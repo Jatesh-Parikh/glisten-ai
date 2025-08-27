@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 const QUERY = "(prefers-reduced-motion: no-preference)";
 
-const isRenderingOnServer = typeof window === undefined;
+const isRenderingOnServer = typeof window === "undefined";
 
 const getInitialState = () => {
   return isRenderingOnServer ? true : !window.matchMedia(QUERY).matches;
