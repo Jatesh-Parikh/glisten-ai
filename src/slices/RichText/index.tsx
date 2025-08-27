@@ -6,6 +6,7 @@ import {
   type SliceComponentProps,
   type JSXMapSerializer,
 } from "@prismicio/react";
+import Bounded from "@/components/Bounded";
 
 const components: JSXMapSerializer = {
   hyperlink: ({ node, children }) => {
@@ -28,9 +29,14 @@ type RichTextProps = SliceComponentProps<Content.RichTextSlice>;
  */
 const RichText: FC<RichTextProps> = ({ slice }) => {
   return (
-    <section>
-      <PrismicRichText field={slice.primary.content} components={components} />
-    </section>
+    <Bounded>
+      <div className="prose prose-invert prose-lg prose-slate max-w-4xl">
+        <PrismicRichText
+          field={slice.primary.content}
+          components={components}
+        />
+      </div>
+    </Bounded>
   );
 };
 
