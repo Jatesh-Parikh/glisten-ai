@@ -42,7 +42,7 @@ export default async function Page({ params }: { params: Params }) {
   );
 }
 
-export async function generateMetaData({
+export async function generateMetadata({
   params,
 }: {
   params: Params;
