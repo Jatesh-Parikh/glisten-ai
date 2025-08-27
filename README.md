@@ -1,9 +1,11 @@
 # Prismic + Next.js Minimal Starter
 
+![Watch live video](video.gif)
+
 Want to quickly get started building your own project with [Prismic][prismic] and [Next.js][nextjs]? This project includes basic configurations and nothing else. The project includes one Rich Text slice, a homepage, and a dynamic page.
 
 - **Demo**: [Open live demo](https://glisten-ai-jyp.netlify.app/)
-- **Watch** [Watch live video](./video.mkv)
+
 - **Learn more about Prismic and Next.js**: [Prismic Next.js Documentation][prismic-docs]
 
 &nbsp;
